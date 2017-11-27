@@ -14,25 +14,26 @@ class Draw
         $playersCount = $query->count();
         $players = $query->all();
         $selectedNumbers = [];
-
         $i = 0;
         while ($i < $playersCount)
         {
             $currentIdx = rand(0, $playersCount - 1);
 
-            if ($players[$i] != $players[$currentIdx] && !in_array($currentIdx, $selectedNumbers)) {
+            $santa = $players[$i];
+            $gifted = $players[$currentIdx];
+            if (Player::canGift($santa, $gifted, $currentIdx, $selectedNumbers)) {
 
                 /* @var $mailing \app\components\MailComponent */
                 $mailing = Yii::$app->mailing;
-                $result = $mailing->sendChristmasDraw($players[$i], $players[$currentIdx]);
+                $result = $mailing->sendChristmasDraw($santa, $gifted);
 
                 if ($result) {
                     $i++;
                     $selectedNumbers [] = $currentIdx;
                 }
+                sleep(1);
             }
         }
-
         return $result;
     }
 }

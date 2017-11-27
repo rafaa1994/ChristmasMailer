@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'surname',
             'nick',
             'email:email',
-
+            'exceptPlayer.fullName',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

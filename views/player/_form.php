@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Player;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,6 +21,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nick')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'except_id')->dropDownList(ArrayHelper::map(Player::find()->all(), 'id', 'fullName'), ['prompt'=> 'Select...']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

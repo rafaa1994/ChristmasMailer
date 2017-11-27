@@ -24,7 +24,7 @@ class MailComponent extends Component
                     'drawedPlayer' => $drawedPlayer,
                     'player' => $player
                     ])
-                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', 'Christmas Mailer 2.0')])
+                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::t('app', 'Christmas Mailer 2.5')])
                     ->setTo($player->email)
                     ->setSubject('Prezenty!!!')
                     ->send();

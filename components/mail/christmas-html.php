@@ -10,7 +10,7 @@ use yii\web\View;
     <html style="background-color:#09384c;">
     <body style="background-color:#09384c;">
     <center style="background-color:#09384c;">
-        <img src="http://i.imgur.com/PMYEiLk.png" alt="Header" />
+        <img src="http://i.imgur.com/PMYEiLk.png" alt="Header">
     </center>
     <div>
         <center>

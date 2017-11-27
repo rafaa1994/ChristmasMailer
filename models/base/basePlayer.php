@@ -12,6 +12,9 @@ use Yii;
  * @property string $surname
  * @property string $nick
  * @property string $email
+ * @property integer $except_id
+ *
+ * @property string $fullName
  */
 class basePlayer extends ActiveRecord
 {
@@ -29,6 +32,8 @@ class basePlayer extends ActiveRecord
     public function rules()
     {
         return [
+            [['id', 'except_id'], 'integer'],
+            ['except_id', 'unique'],
             [['name', 'surname', 'email', 'nick'], 'required'],
             [['name', 'surname', 'email', 'nick'], 'string', 'max' => 45],
         ];
@@ -45,6 +50,16 @@ class basePlayer extends ActiveRecord
             'surname' => 'Surname',
             'email' => 'Email',
             'nick'  => 'Nick',
+            'except_id' => 'Except'
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getExceptPlayer()
+    {
+       return $this->hasOne(self::className(), ['id' => 'except_id']);
+    }
+
 }
